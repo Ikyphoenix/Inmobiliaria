@@ -10,7 +10,7 @@ import {
 } from '@angular/core';
 
 export interface PropertyImage {
-  imageClass: string;
+  src: string;
   alt: string;
 }
 

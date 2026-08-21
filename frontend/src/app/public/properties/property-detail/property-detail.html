@@ -16,20 +16,23 @@
 
         <section class="detail-gallery" aria-label="Imágenes de la propiedad">
             <div class="detail-gallery__main">
-                <div
-                    class="detail-gallery__image {{ activeImage.imageClass }}"
-                    role="img"
-                    [attr.aria-label]="activeImage.alt"
+                <img
+                    class="detail-gallery__image"
+                    [src]="activeImage.src"
+                    [alt]="activeImage.alt"
                     [class.is-zoomed]="zoomLevel > 1"
                     [class.is-dragging]="isDragging"
                     [style.transform]="imageTransform"
+                    loading="eager"
+                    decoding="async"
+                    draggable="false"
                     (dblclick)="toggleZoom()"
                     (wheel)="handleWheel($event)"
                     (pointerdown)="startPan($event)"
                     (pointermove)="movePan($event)"
                     (pointerup)="endPan($event)"
                     (pointercancel)="endPan($event)"
-                ></div>
+                >
 
                 <button
                     class="detail-arrow detail-arrow--previous"
@@ -78,7 +81,7 @@
             </div>
 
             <div class="detail-thumbnails" aria-label="Seleccionar imagen">
-                @for (image of property.images; track image.imageClass; let index = $index) {
+                @for (image of property.images; track image.src; let index = $index) {
                     <button
                         #thumbnailButton
                         class="detail-thumbnail"
@@ -88,11 +91,14 @@
                         [attr.aria-current]="index === currentImageIndex ? 'true' : null"
                         (click)="selectImage(index)"
                     >
-                        <span
-                            class="detail-thumbnail__image {{ image.imageClass }}"
-                            role="img"
-                            [attr.aria-label]="image.alt"
-                        ></span>
+                        <img
+                            class="detail-thumbnail__image"
+                            [src]="image.src"
+                            [alt]="image.alt"
+                            loading="lazy"
+                            decoding="async"
+                            draggable="false"
+                        >
                         <span class="detail-thumbnail__number" aria-hidden="true">
                             {{ index + 1 < 10 ? '0' + (index + 1) : index + 1 }}
                         </span>

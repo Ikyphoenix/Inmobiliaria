@@ -19,7 +19,7 @@
     flex-direction: column;
     padding: clamp(32px, 5vw, 64px) clamp(24px, 3.5vw, 52px);
     overflow: hidden;
-    background-image: url('../home/Prueba2.jpg');
+    background-image: url('/Images/properties/Prueba2.webp');
     background-position: center;
     background-size: cover;
 }
@@ -379,7 +379,12 @@ h1 {
 
     .properties-rail {
         min-height: 62svh;
-        padding: 28px 22px 56px;
+        padding: max(24px, env(safe-area-inset-top)) 22px 56px;
+    }
+
+    .home-link,
+    .home-link:hover {
+        transform: none;
     }
 
     .properties-rail::after {

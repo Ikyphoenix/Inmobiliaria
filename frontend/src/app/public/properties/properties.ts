@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   PropertyDetail,
   PropertyDetailData,
@@ -20,29 +21,29 @@ interface GalleryItem extends PropertyDetailData {
 }
 
 const propertyImages: PropertyImage[] = [
-  { imageClass: 'property-photo--merida', alt:  'Interior de departamento amueblado con sala, comedor, cocina con barra y acabados contemporáneos' },
-  { imageClass: 'property-photo--one', alt: 'Escalera interior con iluminación cálida' },
-  { imageClass: 'property-photo--two', alt: 'Interior minimalista con detalles decorativos' },
-  { imageClass: 'property-photo--three', alt: 'Área social y arquitectura de la propiedad' },
-  { imageClass: 'property-photo--four', alt: 'Fachada y detalle urbano de la propiedad' },
+  { src: '/Images/properties/Propiedad1/4.webp', alt: 'Interior de departamento amueblado con sala, comedor, cocina con barra y acabados contemporáneos' },
+  { src: '/Images/properties/Prueba1.webp', alt: 'Escalera interior con iluminación cálida' },
+  { src: '/Images/properties/Prueba2.webp', alt: 'Interior minimalista con detalles decorativos' },
+  { src: '/Images/properties/Prueba3.webp', alt: 'Área social y arquitectura de la propiedad' },
+  { src: '/Images/properties/Prueba4.webp', alt: 'Fachada y detalle urbano de la propiedad' },
 ];
 
 const propertyOneImages: PropertyImage[] = [
-  { imageClass: 'property-photo--merida4', alt: 'Sala-comedor amueblada con ventanales hacia el patio interior' },
-  { imageClass: 'property-photo--merida1', alt: 'Sala con sillón beige junto a un ventanal y patio interior verde' },
-  { imageClass: 'property-photo--merida2', alt: 'Cocina con barra y comedor amueblado' },
-  { imageClass: 'property-photo--merida3', alt: 'Vista amplia de la sala, el comedor y la cocina con barra' },
-  { imageClass: 'property-photo--merida5', alt: 'Recámara con clóset de puertas corredizas y aire acondicionado' },
-  { imageClass: 'property-photo--merida6', alt: 'Recámara con muro de acabado aparente y escritorio flotante' },
-  { imageClass: 'property-photo--merida7', alt: 'Baño con lavabo sobre cubierta y espejo iluminado' },
-  { imageClass: 'property-photo--merida8', alt: 'Recámara amueblada con baño integrado y aire acondicionado' },
-  { imageClass: 'property-photo--merida9', alt: 'Patio interior con muro verde, barandal de cristal y ventanales' },
-  { imageClass: 'property-photo--merida10', alt: 'Baño con lavabo y espejo iluminado visto desde otro ángulo' },
-  { imageClass: 'property-photo--merida11', alt: 'Comedor y cocina con barra en un espacio abierto' },
+  { src: '/Images/properties/Propiedad1/4.webp', alt: 'Sala-comedor amueblada con ventanales hacia el patio interior' },
+  { src: '/Images/properties/Propiedad1/1.webp', alt: 'Sala con sillón beige junto a un ventanal y patio interior verde' },
+  { src: '/Images/properties/Propiedad1/2.webp', alt: 'Cocina con barra y comedor amueblado' },
+  { src: '/Images/properties/Propiedad1/3.webp', alt: 'Vista amplia de la sala, el comedor y la cocina con barra' },
+  { src: '/Images/properties/Propiedad1/5.webp', alt: 'Recámara con clóset de puertas corredizas y aire acondicionado' },
+  { src: '/Images/properties/Propiedad1/6.webp', alt: 'Recámara con muro de acabado aparente y escritorio flotante' },
+  { src: '/Images/properties/Propiedad1/7.webp', alt: 'Baño con lavabo sobre cubierta y espejo iluminado' },
+  { src: '/Images/properties/Propiedad1/8.webp', alt: 'Recámara amueblada con baño integrado y aire acondicionado' },
+  { src: '/Images/properties/Propiedad1/9.webp', alt: 'Patio interior con muro verde, barandal de cristal y ventanales' },
+  { src: '/Images/properties/Propiedad1/10.webp', alt: 'Baño con lavabo y espejo iluminado visto desde otro ángulo' },
+  { src: '/Images/properties/Propiedad1/11.webp', alt: 'Comedor y cocina con barra en un espacio abierto' },
 ];
 
-function imagesStartingWith(imageClass: string): PropertyImage[] {
-  const coverImage = propertyImages.find((image) => image.imageClass === imageClass);
+function imagesStartingWith(src: string): PropertyImage[] {
+  const coverImage = propertyImages.find((image) => image.src === src);
 
   if (!coverImage) {
     return propertyImages;
@@ -53,7 +54,7 @@ function imagesStartingWith(imageClass: string): PropertyImage[] {
 
 @Component({
   selector: 'app-properties',
-  imports: [PropertyDetail, PropertyFilters],
+  imports: [PropertyDetail, PropertyFilters, RouterLink],
   templateUrl: './properties.html',
   styleUrl: './properties.scss',
 })
@@ -92,7 +93,7 @@ export class Properties {
       fullDescription:
         'Una propiedad de carácter sereno que combina acabados cálidos, iluminación natural y áreas diseñadas para convivir. La distribución prioriza comodidad, privacidad y una experiencia residencial refinada.',
       features: ['4 recámaras', '4 baños', 'Terraza', 'Cuarto de servicio', 'Área familiar', 'Cochera techada'],
-      images: imagesStartingWith('property-photo--one'),
+      images: imagesStartingWith('/Images/properties/Prueba1.webp'),
     },
     {
       id: 'detalles-permanecen',
@@ -107,7 +108,7 @@ export class Properties {
       fullDescription:
         'Arquitectura limpia y funcional con detalles que aportan personalidad sin perder serenidad. Cada ambiente fue pensado para ofrecer amplitud visual, circulación natural y una relación equilibrada con el entorno.',
       features: ['3 recámaras', '3 baños', 'Sala a doble altura', 'Jardín', 'Bodega', 'Estacionamiento'],
-      images: imagesStartingWith('property-photo--two'),
+      images: imagesStartingWith('/Images/properties/Prueba2.webp'),
     },
     {
       id: 'departamento-amueblado',
@@ -122,7 +123,7 @@ export class Properties {
       fullDescription:
         'Un departamento amueblado pensado para disfrutar una vida práctica y confortable. La propuesta combina ambientes frescos, acabados contemporáneos y espacios funcionales para vivir o invertir en Mérida.',
       features: ['2 recámaras', '2 baños', 'Amueblado', 'Área social', 'Cocina equipada', 'Estacionamiento'],
-      images: imagesStartingWith('property-photo--four'),
+      images: imagesStartingWith('/Images/properties/Prueba4.webp'),
     },
   ];
 

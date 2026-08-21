@@ -56,9 +56,8 @@
 }
 
 .detail-gallery__image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+    object-fit: contain;
+    object-position: center;
 }
 
 .detail-gallery__main {
@@ -75,6 +74,9 @@
 .detail-gallery__image {
     position: absolute;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
     cursor: zoom-in;
     user-select: none;
     touch-action: pan-y;
@@ -236,10 +238,8 @@
     height: 100%;
     display: block;
     border-radius: 5px;
-    background-color: rgba(1, 11, 16, 0.76);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    object-fit: cover;
+    object-position: center;
     filter: saturate(0.82) brightness(0.78);
     opacity: 0.78;
     transition:
@@ -391,70 +391,6 @@ h2 {
     border-bottom: 1px solid rgba(239, 211, 163, 0.14);
     color: rgba(247, 243, 234, 0.74);
     font-size: 13px;
-}
-
-.property-photo--merida {
-    background-image: url('../../home/Propiedad1/4.jpeg');
-}
-
-.property-photo--merida1{
-    background-image: url('../../home/Propiedad1/1.jpeg');
-}
-
-.property-photo--merida2{
-    background-image: url('../../home/Propiedad1/2.jpeg');
-}
-
-.property-photo--merida3{
-    background-image: url('../../home/Propiedad1/3.jpeg');
-}
-
-.property-photo--merida4{
-    background-image: url('../../home/Propiedad1/4.jpeg');
-}
-
-.property-photo--merida5{
-    background-image: url('../../home/Propiedad1/5.jpeg');
-}
-
-.property-photo--merida6{
-    background-image: url('../../home/Propiedad1/6.jpeg');
-}
-
-.property-photo--merida7{
-    background-image: url('../../home/Propiedad1/7.jpeg');
-}
-
-.property-photo--merida8{
-    background-image: url('../../home/Propiedad1/8.jpeg');
-}
-
-.property-photo--merida9{
-    background-image: url('../../home/Propiedad1/9.jpeg');
-}
-
-.property-photo--merida10{
-    background-image: url('../../home/Propiedad1/10.jpeg');
-}
-
-.property-photo--merida11{
-    background-image: url('../../home/Propiedad1/11.jpeg');
-}
-
-.property-photo--one {
-    background-image: url('../../home/Prueba1.jpg');
-}
-
-.property-photo--two {
-    background-image: url('../../home/Prueba2.jpg');
-}
-
-.property-photo--three {
-    background-image: url('../../home/Prueba3.jpg');
-}
-
-.property-photo--four {
-    background-image: url('../../home/Prueba4.jpg');
 }
 
 @keyframes reveal-detail {

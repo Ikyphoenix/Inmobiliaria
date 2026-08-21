@@ -1,11 +1,26 @@
 <main class="home">
+    <picture class="hero-background" aria-hidden="true">
+        <source media="(max-width: 600px)" srcset="/Images/home/MeridaMovil.webp">
+        <img
+            src="/Images/home/MeridaDesktop.webp"
+            alt=""
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+            decoding="async"
+        >
+    </picture>
+
     <section class="hero">
         <div class="hero-content">
             <div class="logo-container">
                 <img
                     class="brand-logo"
-                    src="/Images/brand/LogoIn1.png"
+                    src="/Images/brand/LogoIn1.webp"
                     alt="Noma Mid Inmobiliaria Digital"
+                    width="768"
+                    height="512"
+                    decoding="async"
                 >
             </div>
 
@@ -14,8 +29,8 @@
             </p>
 
             <h1>
-                Encuentra tu lugar<br>
-                en Mérida
+                Encuentra tu lugar
+                <span>en Mérida</span>
             </h1>
 
             <p class="description">
@@ -23,7 +38,7 @@
             </p>
 
             <div class="actions">
-                <a class="primary-button" href="propiedades">
+                <a class="primary-button" routerLink="/propiedades">
                     <span>Explorar propiedades</span>
                 </a>
             </div>
