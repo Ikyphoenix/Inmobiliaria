@@ -1,0 +1,61 @@
+<section class="filter-card" aria-labelledby="filter-title">
+    <header class="filter-header">
+        <div>
+            <p class="filter-eyebrow">Colección privada</p>
+            <h2 id="filter-title">Explorar propiedades</h2>
+        </div>
+
+        @if (selectedOperation) {
+            <button class="clear-button" type="button" (click)="clearFilters()">
+                Limpiar
+            </button>
+        }
+    </header>
+
+    <div class="operation-options" aria-label="Seleccionar operación">
+        @for (operation of operations; track operation.value) {
+            <button
+                class="operation-button"
+                type="button"
+                [class.is-active]="selectedOperation === operation.value"
+                [attr.aria-pressed]="selectedOperation === operation.value"
+                (click)="selectOperation(operation.value)"
+            >
+                <span>{{ operation.label }}</span>
+                <span class="operation-mark" aria-hidden="true">&rarr;</span>
+            </button>
+        }
+    </div>
+
+    @if (selectedOperation) {
+        <div class="type-panel">
+            <p>
+                Tipo de propiedad
+                <span>{{ selectedOperation }}</span>
+            </p>
+
+            <div class="type-options" aria-label="Filtrar por tipo de propiedad">
+                @for (propertyType of propertyTypes; track propertyType.value) {
+                    <button
+                        class="type-button"
+                        type="button"
+                        [class.is-active]="isTypeSelected(propertyType.value)"
+                        [attr.aria-pressed]="isTypeSelected(propertyType.value)"
+                        (click)="toggleType(propertyType.value)"
+                    >
+                        <span class="selection-dot" aria-hidden="true"></span>
+                        {{ propertyType.label }}
+                    </button>
+                }
+            </div>
+
+            <p class="filter-help" aria-live="polite">
+                @if (selectedTypes.size === 0) {
+                    Mostrando todas las propiedades en {{ selectedOperation }}.
+                } @else {
+                    {{ selectedTypes.size }} tipo(s) seleccionado(s).
+                }
+            </p>
+        </div>
+    }
+</section>

@@ -1,0 +1,72 @@
+<main class="properties-page">
+    <aside class="properties-rail">
+        <a class="home-link" href="/">
+            <span aria-hidden="true">&larr;</span>
+            Inicio
+        </a>
+
+        <div class="rail-heading">
+            <p class="eyebrow">Noma Mid</p>
+            <h1>Propiedades</h1>
+            <p class="rail-description">
+                Espacios seleccionados para vivir, invertir y construir en Mérida.
+            </p>
+        </div>
+
+        <app-property-filters (filterChange)="applyFilters($event)" />
+    </aside>
+
+    <section class="catalog-area" aria-labelledby="catalog-title">
+        <header class="catalog-heading">
+            <p class="eyebrow">Catálogo inmobiliario</p>
+            <h2 id="catalog-title">Encuentra un espacio para tu próxima historia</h2>
+            <p>Utiliza las flechas para recorrer esta primera muestra de la galería.</p>
+        </header>
+
+        <div class="gallery-stage" role="region" aria-roledescription="carrusel" aria-label="Galería de propiedades">
+            @for (property of filteredGalleryItems; track property.id; let index = $index) {
+                <article class="glass-panel" [attr.data-position]="positionFor(index)" [attr.aria-hidden]="positionFor(index) !== 'active'">
+                    <div class="property-image {{ property.imageClass }}" role="img" [attr.aria-label]="property.imageAlt">
+                    </div>
+
+                    <div class="property-card__content">
+                        <span>{{ property.category }}</span>
+                        <strong>{{ property.title }}</strong>
+                        <p>{{ property.description }}</p>
+                    </div>
+
+                    <button class="property-open" type="button" [attr.aria-label]="'Abrir detalles de ' + property.title"
+                        (click)="openProperty(property)"></button>
+                </article>
+            }
+
+            @if (filteredGalleryItems.length === 0) {
+                <div class="empty-gallery">
+                    <span aria-hidden="true"></span>
+                    <p>No encontramos propiedades con estos criterios.</p>
+                    <small>Prueba otra combinación de operación y tipo de propiedad.</small>
+                </div>
+            } @else {
+                @if (filteredGalleryItems.length > 1) {
+                    <div class="gallery-controls">
+                        <button class="gallery-control" type="button" aria-label="Mostrar propiedad anterior"
+                            (click)="showPrevious()">
+                            &larr;
+                        </button>
+                        <button class="gallery-control" type="button" aria-label="Mostrar propiedad siguiente" (click)="showNext()">
+                            &rarr;
+                        </button>
+                    </div>
+                }
+
+                <span class="gallery-counter" aria-live="polite">
+                    {{ activeIndex + 1 }} / {{ filteredGalleryItems.length }}
+                </span>
+            }
+        </div>
+    </section>
+</main>
+
+@if (selectedProperty; as property) {
+    <app-property-detail [property]="property" (closeRequested)="closeProperty()"/>
+}
